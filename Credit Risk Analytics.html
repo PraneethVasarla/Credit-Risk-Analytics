@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  
+  background-image: url("https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.container {
+  padding: 35px;
+  background-color: #f0f0f0;
+  margin : 1% 25%;
+}
+
+input[type=text], input[type=tel]   {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: block; 
+  font-size : 30;
+  border: none;
+  background: #b3b3b3;
+}
+.container select{
+ width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: block;
+  border: none;
+  background: #b3b3b3;
+  
+}
+input[type="radio"]{
+	padding:10px;
+	margin-top:10px;
+}
+
+
+input[type=text]:focus, input[type=tel]:focus {
+  background-color: #ddd;
+ 
+}
+
+.nextbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 0% 35%;
+  border: none;
+  cursor: pointer;
+  width: 35%;
+  display : block;
+  opacity: 0.9;
+  border-radius: 5px;
+  
+}
+
+.nextbtn:hover {
+  opacity: 1;
+}
+.error{
+color:red;
+}
+
+
+</style>
+</head>
+<body>
+<form id='form1' onsubmit="return false">
+	 <div class="container">
+			<h1 align="center">Credit Risk Analytics</h1>
+			<br/>
+	    
+	    <label for="uname"><b>Loan Amount</b></label>
+	    <input type="text" placeholder="Amount of loan the user requested" id="uname" onkeypress="return onlyNumberKey(event)">
+		  <p class="error"></p>
+
+		  <label for="Aadhaar" id="Aadhaar"><b>Aadhaar</b></label><br/>
+		
+	  		<select>
+	  		<!-- <input type="radio" name="Aadhaar" value="0">Submitted
+	
+	  		<input type="radio" name="Aadhaar" value="1">Not Submitted -->
+			
+
+			<option value="" disabled selected hidden>Did the applicant submit their Aadhaar proof?</option>
+	  
+			<option value="1">Submitted</option>
+	  
+			<option value="0">Not Submitted</option>
+		</select>
+		
+		<p class="error"></p>
+
+
+    <label for="fname"><b>L.T.V</b></label>
+    <input type="text" placeholder="Loan to asset value ratio" id="fname">
+    <p class="error"></p>
+
+
+	<label for="gender"><b>Employement Type</b></label>
+	<select id="gender">
+
+	  <option value="" disabled selected hidden>Select</option>
+
+	  <option value="0">Self-Employed</option>
+
+	  <option value="1">Salaried</option>
+  </select>
+  <p class="error"></p>
+  
+  <label for="gender"><b>CIBIL Category</b></label>
+  <select id="CIBIL">
+
+	<option value="" disabled selected hidden>Select</option>
+
+	<option value="0">High Risk</option>
+
+	<option value="1">Low Risk</option>
+
+	<option value="2">Medium Risk</option>
+
+	<option value="3">No bureau History available</option>
+
+	<option value="4">Not Scored</option>
+
+	<option value="5">Very High Risk</option>
+</select>
+<p class="error"></p>
+	
+	
+      
+		<label for="address"><b>No. of Overdue Accounts</b></label>
+    <input type="text" placeholder="How many over due accounts does the applicant of this loan have?" id="address">
+    <p class="error"></p>
+
+	<label for="pincode"><b>Principle outstanding amount</b></label>
+      <input type="text" placeholder="What is the total Principal outstanding amount of the active loans?" id="pincode">
+      <p class="error"></p>
+
+	  <label for="pincode"><b>Sanctioned amount</b></label>
+      <input type="text" placeholder="What is the total amount that was sanctioned for all the loans to the applicant?" id="pincode">
+	  <p class="error"></p>
+	  
+	  <label for="pincode"><b>Disbursed amount</b></label>
+      <input type="text" placeholder="What is the total amount that was disbursed for all the loans to the applicant till now?" id="pincode">
+	  <p class="error"></p>
+	  
+	  <label for="pincode"><b>Installment amount</b></label>
+      <input type="text" placeholder="What is the installment amount that the user has chosen?" id="pincode">
+	  <p class="error"></p>
+	  
+	  <label for="pincode"><b>No. of new accounts</b></label>
+      <input type="text" placeholder="No. of new accounts opened during the past 6 months" id="pincode">
+	  <p class="error"></p>
+	  
+	  <label for="pincode"><b>Defaulted Accounts</b></label>
+      <input type="text" placeholder="How many Loans defaulted in the last 6 months" id="pincode">
+	  <p class="error"></p>
+	  
+	  
+	  <label for="pincode"><b>No. Of Enquiries made</b></label>
+      <input type="text" placeholder="No. of inquiries made by applicant regarding the loan" id="pincode">
+	  <p class="error"></p>
+	  
+	  <label for="pincode"><b>Time since first loan</b></label>
+      <input type="text" placeholder="Time since first loan in months" id="pincode">
+	  <p class="error"></p>
+
+	  <button type="submit" class="nextbtn" >SUBMIT</button>
+
+    </div>
+	
+	</form>
+	
+    <script>
+
+    	
+    	function onlyNumberKey(evt) { 
+          
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode 
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) {
+	  
+	  uname.nextElementSibling.innerText = " ** please enter only numbers";
+            return false; }
+        return true; 
+    } 
+
+		// function validation(){
+
+		// 	var loan = document.getElementById("uname").value.trim();
+		// 	loan = Number(loan)
+		// 	console.log(loan)
+
+		// 	 var keycode = (key.which) ? key.which : key.keyCode;
+  //          //comparing pressed keycodes
+
+  //          if (keycode > 31 && (keycode < 48 || keycode > 57)) return true;
+  //          else {
+  //       uname.nextElementSibling.innerHTML = "**Only enter numerical value here!";
+  //       uname.focus();
+  //       return false;
+  
+  //     }
+  
+			
+		// }
+
+
+
+	</script>
+
+ 
+     
+</body>
+</html>
